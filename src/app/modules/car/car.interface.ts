@@ -12,3 +12,6 @@ type Car = {
     inStock: boolean
 }
 
+
+
+export default Car;
