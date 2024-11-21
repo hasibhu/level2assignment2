@@ -26,6 +26,7 @@ const carSchema = new Schema<Car>({
     },
     category: {
         type: String,
+        enum: ["Sedan", "SUV", "Truck", "Coupe", "Convertible",],
         required: true
     },
     description: {
