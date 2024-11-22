@@ -1,39 +1,33 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Types } from "mongoose";
 import { Order } from "./order.interface";
 
-const orderSchema = new Schema<Order>(
-    {
-        id: {
-            type: String,
-            required: true,
-            unique: true,
-        },
-        email: {
-            type: String,
-            required: true,
-        },
-        car: {
-            type: Schema.Types.ObjectId, 
-            ref: "Car",
-            required: true,
-        },
-        quantity: {
-            type: Number,
-            required: true,
-            min: 1,
-        },
-        totalPrice: {
-            type: Number,
-            required: true,
-            min: 0, 
-        },
-    },
-    {
-        timestamps: true, 
-        versionKey: false, 
-    }
-);
+const orderSchema = new Schema<Order>({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  car: {
+    type: Types.ObjectId, 
+    required: true,
+    ref: "Car", 
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+}, {
+  timestamps: true,
+  versionKey: false,
+});
 
-const orderModel = model<Order>("Order", orderSchema);
-
-export default orderModel;
+const OrderModel = model<Order>("Order", orderSchema);
+export default OrderModel;
