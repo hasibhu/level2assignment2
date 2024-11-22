@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { carService, getAllCarsService } from "./car.service";
+import { carService, getAllCarsService, getSingleCarFromDB } from "./car.service";
 import { z } from "zod";
+import { Types } from "mongoose";
 
 
 
-
+// create car api 
 export const createCar = async (req: Request, res: Response): Promise<void> => {
     try {
 
@@ -68,7 +69,7 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
 
 }
 
-
+// get all car api 
 export const getAllCarsController = async (req: Request, res: Response) => {
   try {
     const { searchTerm } = req.query;
@@ -88,6 +89,46 @@ export const getAllCarsController = async (req: Request, res: Response) => {
       message: "Internal server error",
       status: false,
       error: error.message,
+    });
+  }
+};
+
+
+// get single car api
+
+export const getSingleCar = async (req: Request, res: Response) => {
+  try {
+    const carId = req.params.carId;
+
+    // Ensure carId is a valid ObjectId
+    if (!Types.ObjectId.isValid(carId)) {
+      return res.status(400).json({
+        success: false,
+        message: `Your given car ID ${carId} is Invalid`,
+      });
+    };
+
+
+    const result = await getSingleCarFromDB(carId);
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: `Car not found with ID ${carId}`,
+      });
+    };
+
+    res.status(200).json({
+      success: true,
+      message: "Car retrieved successfully.",
+      data: result,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
     });
   }
 };

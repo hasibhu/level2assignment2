@@ -1,10 +1,11 @@
 
 
+import { Types } from "mongoose";
 import { Car } from "./car.interface";
 import carModel from "./car.model"
 
 
-
+// create car api 
 export const carService = async (carData: Car) => {   
     const result = await carModel.create(carData);
     return result;
@@ -12,7 +13,7 @@ export const carService = async (carData: Car) => {
 
 
 
-
+// get all car api 
 
 export const getAllCarsService = async (searchTerm?: string)=>{
     
@@ -39,6 +40,12 @@ export const getAllCarsService = async (searchTerm?: string)=>{
 
 
 
+// get single car api 
+
+export const getSingleCarFromDB = async (_id: string) => {
+  // Convert string ID to ObjectId
+  return await carModel.findById(new Types.ObjectId(_id));
+};
 
 
 
@@ -48,15 +55,3 @@ export const getAllCarsService = async (searchTerm?: string)=>{
 
 
 
-
-
-
-
-
-
-
- // use of the customised statics 
-    // if (await carModel.isCarExists(carData.id)) {
-    //     throw new Error('Car already exists');
-    // }
-      // end  of the customised statics 

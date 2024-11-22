@@ -1,7 +1,7 @@
 
 
 import express from 'express'
-import { createCar, getAllCarsController } from './car.controller';
+import { createCar, getAllCarsController, getSingleCar } from './car.controller';
 
 
 
@@ -12,6 +12,17 @@ router.post('/api/cars', createCar)
 
 // get all cars  
 router.get("/api/cars", getAllCarsController);
+
+// id specific car 
+    
+router.get('/:carId', getSingleCar);
+
+
+
+
+
+
+
 
 
 export const CarRoutes = router;
