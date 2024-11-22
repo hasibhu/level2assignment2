@@ -48,11 +48,23 @@ export const getSingleCarFromDB = async (_id: string) => {
 };
 
 
-// update car information 
+// update car information api
 
 export const updateCarService = async (carId: string, newInfo: Partial<any>) => {
   
   const result = await carModel.findByIdAndUpdate(carId, newInfo, {new: true})
+
+  return result;
+}
+
+
+
+
+// delete car information api
+
+export const DeleteCarService = async (carId: string) => {
+  
+  const result = await carModel.findByIdAndDelete(carId)
 
   return result;
 }

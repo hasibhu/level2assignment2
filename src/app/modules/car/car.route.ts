@@ -1,7 +1,7 @@
 
 
 import express from 'express'
-import { createCar, getAllCarsController, getSingleCar } from './car.controller';
+import { createCar, deleteCarController, getAllCarsController, getSingleCar, updateCarController } from './car.controller';
 
 
 
@@ -18,7 +18,11 @@ router.get("/api/cars", getAllCarsController);
 router.get('/:carId', getSingleCar);
 
 
+router.put("/:carId", updateCarController);
 
+
+
+router.delete("/:carId", deleteCarController);
 
 
 

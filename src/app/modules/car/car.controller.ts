@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { carService, getAllCarsService, getSingleCarFromDB } from "./car.service";
+import { DeleteCarService, carService, getAllCarsService, getSingleCarFromDB, updateCarService } from "./car.service";
 import { z } from "zod";
 import { Types } from "mongoose";
 
@@ -132,3 +132,97 @@ export const getSingleCar = async (req: Request, res: Response) => {
     });
   }
 };
+
+
+
+// car info update api 
+export const updateCarController = async (req: Request, res: Response) => {
+  try {
+    const carId = req.params.carId;
+
+    // Validate car ID
+    if (!Types.ObjectId.isValid(carId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid car ID",
+      });
+    };
+
+    const updateData = req.body;
+
+    // Ensure there's data to update
+    if (!updateData || Object.keys(updateData).length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "No update data provided",
+      });
+    };
+
+    const updatedCar = await updateCarService(carId, updateData);
+
+    if (!updatedCar) {
+      return res.status(404).json({
+        success: false,
+        message: "Car not found",
+      });
+    };
+
+    res.status(200).json({
+      success: true,
+      message: "Car updated successfully",
+      data: updatedCar,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+
+
+
+// car info update api 
+export const deleteCarController = async (req: Request, res: Response) => {
+  try {
+    const carId = req.params.carId;
+
+    // Validate car ID
+    if (!Types.ObjectId.isValid(carId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid car ID",
+      });
+    };
+
+
+    const deletedCar = await DeleteCarService(carId);
+
+    if (!deletedCar) {
+      return res.status(404).json({
+        success: false,
+        message: "Car hs been not deleted.",
+      });
+    };
+
+    res.status(200).json({
+      success: true,
+      message: "Car updated successfully",
+      data: deletedCar,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+
+
+
