@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { carService } from "./car.service";
+import { carService, getAllCarsService } from "./car.service";
 import { z } from "zod";
 
 
@@ -67,3 +67,27 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
 }
 
 }
+
+
+export const getAllCarsController = async (req: Request, res: Response) => {
+  try {
+    const { searchTerm } = req.query;
+
+      
+      console.log("search terms in controller", searchTerm);
+    // Call the service to get cars
+    const cars = await getAllCarsService(searchTerm?.toString());
+
+    res.status(200).json({
+      message: "Cars retrieved successfully",
+      status: true,
+      data: cars,
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      message: "Internal server error",
+      status: false,
+      error: error.message,
+    });
+  }
+};

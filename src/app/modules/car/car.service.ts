@@ -5,11 +5,7 @@ import carModel from "./car.model"
 
 
 
-export const carService = async (carData: Car) => {
-
-    
-   
-    
+export const carService = async (carData: Car) => {   
     const result = await carModel.create(carData);
     return result;
 }
@@ -17,6 +13,27 @@ export const carService = async (carData: Car) => {
 
 
 
+
+export const getAllCarsService = async (searchTerm?: string)=>{
+    
+    let query: any = {};
+
+
+    if (searchTerm) {
+    const searchRegex = new RegExp(searchTerm.toString(), "i"); // Case-insensitive search
+    query = {
+      $or: [
+        { brand: searchRegex },
+        { model: searchRegex },
+        { category: searchRegex },
+      ],
+    };
+  }
+
+
+    const cars = await carModel.find(query)
+    return cars
+}
 
 
 
