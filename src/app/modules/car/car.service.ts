@@ -48,7 +48,14 @@ export const getSingleCarFromDB = async (_id: string) => {
 };
 
 
+// update car information 
 
+export const updateCarService = async (carId: string, newInfo: Partial<any>) => {
+  
+  const result = await carModel.findByIdAndUpdate(carId, newInfo, {new: true})
+
+  return result;
+}
 
 
 
