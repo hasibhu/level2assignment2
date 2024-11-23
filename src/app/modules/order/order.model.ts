@@ -8,7 +8,7 @@ const orderSchema = new Schema<Order>(
             required: true,
         },
         car: {
-            type: Types.ObjectId, 
+            type: Schema.Types.ObjectId, 
             required: true,
             ref: "Car", 
         },
