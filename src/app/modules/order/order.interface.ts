@@ -1,11 +1,11 @@
-import { ObjectId } from "mongoose";
+import { ObjectId, Types } from "mongoose";
 
 
 
 
-export type Order = {
+export interface Order  {
   email: string;
-  car: ObjectId; 
+  car: Types.ObjectId; 
   quantity: number;
-  totalPrice: number;
+  totalPrice?: number;
 };
