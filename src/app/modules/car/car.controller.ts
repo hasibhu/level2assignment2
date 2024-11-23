@@ -40,12 +40,12 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
             data: result
         })
 
-    } catch (error) {
+    } catch (error: any) {
         if (error instanceof z.ZodError) {
         
 
         // Handle zod validation errors
-         res.status(400).json({
+        res.status(400).json({
             success: false,
             message: "Validation error.",
             details: error.errors.map((err) => ({
@@ -120,7 +120,7 @@ export const getSingleCar = async (req: Request, res: Response) => {
       data: result,
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error(error);
     res.status(500).json({
       success: false,
@@ -169,7 +169,7 @@ export const updateCarController = async (req: Request, res: Response) => {
       data: updatedCar,
     });
 
-  } catch (error) {
+  } catch (error : any) {
     console.error(error);
     res.status(500).json({
       success: false,
