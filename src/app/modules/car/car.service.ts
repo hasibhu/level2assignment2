@@ -1,8 +1,8 @@
 
 
 import { Types } from "mongoose";
-import { Car } from "./car.interface";
 import carModel from "./car.model"
+import Car from "./car.interface";
 
 
 // create car api 
