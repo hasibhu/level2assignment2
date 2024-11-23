@@ -3,11 +3,6 @@ import { Order } from "./order.interface";
 
 const orderSchema = new Schema<Order>(
     {
-        id: {
-            type: String,
-            required: true,
-            unique: true,
-        },
         email: {
             type: String,
             required: true,

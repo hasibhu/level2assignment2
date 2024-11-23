@@ -6,21 +6,19 @@ import carModel from "./car.model"
 
 
 // create car api 
-export const carService = async (carData: Car) => {   
-    const result = await carModel.create(carData);
-    return result;
-}
-
-
+export const carService = async (carData: Car) => {
+  const result = await carModel.create(carData);
+  return result;
+};
 
 // get all car api 
 
-export const getAllCarsService = async (searchTerm?: string)=>{
+export const getAllCarsService = async (searchTerm?: string) => {
     
-    let query: any = {};
+  let query: any = {};
 
 
-    if (searchTerm) {
+  if (searchTerm) {
     const searchRegex = new RegExp(searchTerm.toString(), "i"); // Case-insensitive search
     query = {
       $or: [
@@ -32,12 +30,9 @@ export const getAllCarsService = async (searchTerm?: string)=>{
   }
 
 
-    const cars = await carModel.find(query)
-    return cars
-}
-
-
-
+  const cars = await carModel.find(query)
+  return cars
+};
 
 
 // get single car api 
@@ -52,10 +47,10 @@ export const getSingleCarFromDB = async (_id: string) => {
 
 export const updateCarService = async (carId: string, newInfo: Partial<any>) => {
   
-  const result = await carModel.findByIdAndUpdate(carId, newInfo, {new: true})
+  const result = await carModel.findByIdAndUpdate(carId, newInfo, { new: true })
 
   return result;
-}
+};
 
 
 
@@ -67,7 +62,7 @@ export const DeleteCarService = async (carId: string) => {
   const result = await carModel.findByIdAndDelete(carId)
 
   return result;
-}
+};
 
 
 

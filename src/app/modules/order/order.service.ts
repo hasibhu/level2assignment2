@@ -1,6 +1,7 @@
 import carModel from "../car/car.model";
-import orderModel from "./order.model";
+import OrderModel from "./order.model";
 import { Order } from "./order.interface";
+
 
 export const createOrderService = async (orderData: Omit<Order, "totalPrice">) => {
 
@@ -20,7 +21,7 @@ export const createOrderService = async (orderData: Omit<Order, "totalPrice">) =
   const totalPrice = car.price * orderData.quantity;
 
   
-  const order = await orderModel.create({
+  const order = await OrderModel.create({
     ...orderData,
     totalPrice, 
   });
@@ -33,6 +34,25 @@ export const createOrderService = async (orderData: Omit<Order, "totalPrice">) =
     
     
   return order;
+};
+
+
+
+// service api for revenue 
+export const calculateRevenueService = async () => {
+  const result = await OrderModel.aggregate([
+    {
+      $group: {
+        _id: null,
+        totalRevenue: { $sum: "$totalPrice" },
+      },
+    },
+  ]);
+
+  // Log aggregation result for debugging
+  console.log("Aggregation Result:", result);
+
+  return result.length > 0 ? result[0].totalRevenue : 0;
 };
 
 

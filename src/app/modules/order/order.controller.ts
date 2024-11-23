@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createOrderService, getAllCarsService } from "./order.service";
+import { calculateRevenueService, createOrderService } from "./order.service";
 import { z } from "zod";
 import { ObjectId, Types } from "mongoose";
 import { Order } from "./order.interface";
@@ -8,7 +8,6 @@ export const createOrderController = async (req: Request, res: Response) => {
   try {
    
     const orderValidationSchema = z.object({
-      id: z.string(),
       email: z.string().email(),
       car: z.string(), 
       quantity: z.number().min(1, "Quantity must be at least 1."),
@@ -54,4 +53,25 @@ export const createOrderController = async (req: Request, res: Response) => {
 };
 
 
+
+
+
+export const calculateRevenueController = async (req: Request, res: Response) => {
+  try {
+    const totalRevenue = await calculateRevenueService();
+
+    res.status(200).json({
+      success: true,
+      message: "Revenue calculated successfully",
+      data: { totalRevenue },
+    });
+  } catch (error) {
+    console.error("Error in calculateRevenueController:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
 

@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use('/v1/app/', CarRoutes)
-app.use('/v1/app/', orderRoutes)
+app.use('', CarRoutes)
+app.use('', orderRoutes)
 
 app.get('/', (req, res) => {
   res.send('Welcome to my car db')
