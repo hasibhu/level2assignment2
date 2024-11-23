@@ -15,7 +15,7 @@ app.use('', CarRoutes)
 app.use('', orderRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my car db')
+  res.send('Welcome to Car Store API ')
 })
 
 

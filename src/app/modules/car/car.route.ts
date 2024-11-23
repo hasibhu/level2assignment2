@@ -13,16 +13,15 @@ router.post('/api/cars', createCar)
 // get all cars  
 router.get("/api/cars", getAllCarsController);
 
-// id specific car 
-    
-router.get('/:carId', getSingleCar);
+// id specific car
+router.get('/api/cars/:carId', getSingleCar);
 
 
-router.put("/:carId", updateCarController);
+router.put("/api/cars/:carId", updateCarController);
 
 
 
-router.delete("/:carId", deleteCarController);
+router.delete("/api/cars/:carId", deleteCarController);
 
 
 
