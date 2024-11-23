@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use('', CarRoutes)
-app.use('', orderRoutes)
+app.use('/api/cars', CarRoutes)
+app.use('/api/orders', orderRoutes)
 
 app.get('', (req, res) => {
   res.send('Welcome to Car Store API ')
