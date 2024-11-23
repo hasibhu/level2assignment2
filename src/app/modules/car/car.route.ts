@@ -1,6 +1,6 @@
 
 
-import express from 'express'
+import express, { RequestHandler } from 'express'
 import { createCar, deleteCarController, getAllCarsController, getSingleCar, updateCarController } from './car.controller';
 
 
@@ -14,14 +14,14 @@ router.post('/api/cars', createCar)
 router.get("/api/cars", getAllCarsController);
 
 // id specific car
-router.get('/api/cars/:carId', getSingleCar);
+router.get('/api/cars/:carId', getSingleCar as RequestHandler);
 
 
-router.put("/api/cars/:carId", updateCarController);
+router.put("/api/cars/:carId", updateCarController as RequestHandler);
 
 
 
-router.delete("/api/cars/:carId", deleteCarController);
+router.delete("/api/cars/:carId", deleteCarController as RequestHandler);
 
 
 
