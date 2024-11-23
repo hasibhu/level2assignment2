@@ -4,11 +4,6 @@ import Car from "./car.interface";
 
 const carSchema = new Schema<Car>(
     {
-        id: {
-            type: String,
-            required: true,
-            unique: true,
-        },
         brand: {
             type: String,
             required: true

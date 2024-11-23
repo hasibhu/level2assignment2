@@ -8,11 +8,8 @@ import { Types } from "mongoose";
 // create car api 
 export const createCar = async (req: Request, res: Response): Promise<void> => {
     try {
-
-
         // creating vlidtion wiht Zod
         const carValidationSchema = z.object({
-            id: z.string(),
             brand: z.string(),
             model: z.string(),
             year: z.number(),
@@ -48,7 +45,7 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
         
 
         // Handle zod validation errors
-        return res.status(400).json({
+         res.status(400).json({
             success: false,
             message: "Validation error.",
             details: error.errors.map((err) => ({
@@ -59,7 +56,7 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
 
     } else {
         // Handle other errors
-        return res.status(500).json({
+         res.status(500).json({
             success: false,
             message: error.message || 'Internal server error',
         });
