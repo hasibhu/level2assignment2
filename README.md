@@ -27,7 +27,7 @@ data format will be in the following format: the data is type sensetive
   "quantity": 50,
   "inStock": true
 }
-
+```
 
 ## 
 
