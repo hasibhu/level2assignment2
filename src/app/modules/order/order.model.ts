@@ -17,7 +17,7 @@ const orderSchema = new Schema<Order>(
             required: true,
         },
         totalPrice: {
-            type: Number,
+            type: Number
         },
     },
     
