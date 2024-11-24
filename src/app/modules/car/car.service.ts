@@ -19,7 +19,7 @@ export const getAllCarsService = async (searchTerm?: string) => {
 
 
   if (searchTerm) {
-    const searchRegex = new RegExp(searchTerm.toString(), "i"); // Case-insensitive search
+    const searchRegex = new RegExp(searchTerm.toString(), "i"); 
     query = {
       $or: [
         { brand: searchRegex },

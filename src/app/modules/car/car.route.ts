@@ -8,20 +8,20 @@ import { createCar, deleteCarController, getAllCarsController, getSingleCar, upd
 const router = express.Router();
 
 
-router.post('/', createCar)
+router.post('/api/cars', createCar)
 
 // get all cars  
-router.get("/", getAllCarsController);
+router.get("/api/cars", getAllCarsController);
 
 // id specific car
 router.get('/:carId', getSingleCar as RequestHandler);
 
 
-router.put("/:carId", updateCarController as RequestHandler);
+router.put("/api/cars/:carId", updateCarController as RequestHandler);
 
 
 
-router.delete("/:carId", deleteCarController as RequestHandler);
+router.delete("/api/cars/:carId", deleteCarController as RequestHandler);
 
 
 

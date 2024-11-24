@@ -23,9 +23,6 @@ export const createCar = async (req: Request, res: Response): Promise<void> => {
 
         const carData = req.body;
         
-
-        // before zod 
-        // const result = await carService(carData);
         
         // with zod  
         const zodParsedData = carValidationSchema.parse(carData)
@@ -181,9 +178,10 @@ export const updateCarController = async (req: Request, res: Response) => {
 
 
 
-// car info update api 
+// car info delete api 
 export const deleteCarController = async (req: Request, res: Response) => {
   try {
+
     const carId = req.params.carId;
 
     // Validate car ID
@@ -200,13 +198,13 @@ export const deleteCarController = async (req: Request, res: Response) => {
     if (!deletedCar) {
       return res.status(404).json({
         success: false,
-        message: "Car hs been not deleted.",
+        message: "Car has been not deleted because no car has been found with your ID.",
       });
     };
 
     res.status(200).json({
       success: true,
-      message: "Car updated successfully",
+      message: "Car has been deleted successfully",
       data: deletedCar,
     });
 
