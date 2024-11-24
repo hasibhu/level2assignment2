@@ -15,8 +15,8 @@
 
 ## To insert car info in DB
 use postman application with POST method with url https://level2assignment2-zeta.vercel.app/api/cars
-data format will be in the following format: 
-`
+data format will be in the following format: the data is type sensetive 
+```json
 {
   "brand": "Toyota",
   "model": "Camry",
@@ -27,8 +27,9 @@ data format will be in the following format:
   "quantity": 50,
   "inStock": true
 }
-`
 
+
+## 
 
 
 
