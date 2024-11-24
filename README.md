@@ -13,9 +13,15 @@
 ## To Get all cars info
  https://level2assignment2-zeta.vercel.app/api/cars
 
+ ## To get ID specific car info
+
+* use postman application with GET method with url https://level2assignment2-zeta.vercel.app/:carId
+* Use car id at the end of the url replacing ":carId". 
+
+
 ## To insert car info in DB
 * use postman application with POST method with url https://level2assignment2-zeta.vercel.app/api/cars
-data format will be in the following format: the data is type sensetive 
+* data format will be in the following format: the data is type sensetive 
 ```json
 {
   "brand": "Toyota",
@@ -29,13 +35,45 @@ data format will be in the following format: the data is type sensetive
 }
 ```
 
-## 
+## To update car info in DB
+
+* use postman application with PUT method with url https://level2assignment2-zeta.vercel.app/api/cars/:carId
+* Use car id at the end of the url replacing ":carId". 
+* Data format will be in the following format: the data is type sensetive 
+```json
+{
+  "brand": "Toyota",
+  "model": "Camry",
+  "year": 2024,
+  "price": 25000,
+}
+```
+
+## To delete car info from DB
+
+* use postman application with DELETE method with url https://level2assignment2-zeta.vercel.app/api/cars/:carId
+* Use car id at the end of the url replacing ":carId". 
 
 
+# Order
 
-## interface > Schema > Model > DB Query
+## To create an Order 
+* use postman application with POST method with url https://level2assignment2-zeta.vercel.app/api/orders
+* data format will be in the following format: the data is TYPE sensetive. 
 
-* Request hits route and then route calls controller, controller calls service, and service will handle buiness ligic.
+```json
+{
+  "email": "customer@example.com",
+  "car": "will be replaced by car ID from DB",
+  "quantity": 1
+}
+```
+
+
+## To see all revenue  
+* use postman application with GET method with url https://level2assignment2-zeta.vercel.app/revenue
+
+
 
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
