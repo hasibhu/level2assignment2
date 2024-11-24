@@ -11,10 +11,10 @@
 ##### https://level2assignment2-zeta.vercel.app/
 
 ## To Get all cars info
-#### https://level2assignment2-zeta.vercel.app/api/cars
+ https://level2assignment2-zeta.vercel.app/api/cars
 
 ## To insert car info in DB
-use postman application with POST method with url https://level2assignment2-zeta.vercel.app/api/cars
+* use postman application with POST method with url https://level2assignment2-zeta.vercel.app/api/cars
 data format will be in the following format: the data is type sensetive 
 ```json
 {
@@ -34,7 +34,7 @@ data format will be in the following format: the data is type sensetive
 
 
 ## interface > Schema > Model > DB Query
-#### IRCS 
+
 * Request hits route and then route calls controller, controller calls service, and service will handle buiness ligic.
 
 
