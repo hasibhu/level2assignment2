@@ -3,7 +3,33 @@
 1. clone the repository, run "git clone https://github.com/hasibhu/level2assignment2.git"
 2. run 'npm i' to install all node modules dependecies. 
 3. run 'npm run start:dev' to run the server in local machine 
-4.  
+
+
+# working with APIs
+
+## visit the app
+##### https://level2assignment2-zeta.vercel.app/
+
+## To Get all cars info
+#### https://level2assignment2-zeta.vercel.app/api/cars
+
+## To insert car info in DB
+use postman application with POST method with url https://level2assignment2-zeta.vercel.app/api/cars
+data format will be in the following format: 
+`
+{
+  "brand": "Toyota",
+  "model": "Camry",
+  "year": 2024,
+  "price": 25000,
+  "category": "Sedan",
+  "description": "A reliable family sedan with modern features.",
+  "quantity": 50,
+  "inStock": true
+}
+`
+
+
 
 
 ## interface > Schema > Model > DB Query
