@@ -2,7 +2,7 @@ import carModel from "../car/car.model";
 import OrderModel from "./order.model";
 import { Order } from "./order.interface";
 
-
+// order creating service 
 export const createOrderService = async (orderData: Omit<Order, "totalPrice">) => {
   // Fetch the car by ID
   const car = await carModel.findById(orderData.car);
@@ -41,7 +41,7 @@ export const createOrderService = async (orderData: Omit<Order, "totalPrice">) =
 
 
 
-
+// revenue extracting  service 
 export const calculateRevenueService = async () => {
   const result = await OrderModel.aggregate([
     {

@@ -5,6 +5,7 @@ import { ObjectId, Types } from "mongoose";
 import { Order } from "./order.interface";
 
 
+// order creatinf controller 
 
 export const createOrderController = async (req: Request, res: Response) => {
   try {
@@ -51,6 +52,7 @@ export const createOrderController = async (req: Request, res: Response) => {
 };
 
 
+// revenue controller 
 
 export const calculateRevenueController = async (req: Request, res: Response) => {
   try {

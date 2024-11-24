@@ -1,5 +1,4 @@
 
-
 import { Types } from "mongoose";
 import carModel from "./car.model"
 import Car from "./car.interface";
@@ -51,8 +50,6 @@ export const updateCarService = async (carId: string, newInfo: Partial<any>) => 
 
   return result;
 };
-
-
 
 
 // delete car information api
